@@ -1,0 +1,194 @@
+	CREATE TABLE IF NOT EXISTS  `ci_sessions` (
+		session_id varchar(40) DEFAULT '0' NOT NULL,
+		ip_address varchar(45) DEFAULT '0' NOT NULL,
+		user_agent varchar(120) NOT NULL,
+		last_activity int(10) unsigned DEFAULT 0 NOT NULL,
+		user_data text NOT NULL,
+		PRIMARY KEY (session_id),
+		KEY `last_activity_idx` (`last_activity`)
+	);
+
+	CREATE TABLE IF NOT EXISTS Clientes (
+		CodCliente int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		NomeCliente VarChar(30),
+		SobreNomeCliente VarChar(80),
+		EmailCliente VarChar(100),
+		SexoCliente VarChar(1),
+		CPFCliente VarChar(11),
+		RGCliente VarChar(20),
+		DataNasCliente date,
+		SenhaCliente VarChar(32),
+		TelefoneCliente VarChar(11),
+		CelularCliente VarChar(11),
+		DataCadastro date
+	);
+	
+	CREATE TABLE IF NOT EXISTS ClienteEnder (
+		CodEndereco int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		CodCliente int(5) PRIMARY KEY, 
+		CEP int(8),
+		Rua VarChar(80),
+		NumResidencia int(7),
+		Complemento  VarChar(50),
+		Bairro VarChar(30),
+		Cidade VarChar(50),
+		Estado VarChar (2),
+		Referencia VarChar(100),
+		NomeContato VarChar(80),
+		SobreNomeContato varChar(80),
+		TelefoneContato VarChar(11),
+		TipoEndereco VarChar(1)
+	);
+
+
+	CREATE TABLE IF NOT EXISTS Variantes (
+		CodVariante INT PRIMARY KEY AUTO_INCREMENT,
+		RefVariante VarChar(15),
+		DescVariante VarChar(50) NOT NULL,
+		CodImagemVariante INT,
+		HexaDecimal VarChar(6)
+	);	 
+
+	CREATE TABLE IF NOT EXISTS Produtos (
+		CodProduto int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+		CodLinha   INT (5),
+		CodCategoria INT(5),
+		CodColecao INT(5),
+		CodGrade   INT(5),
+		GeneroProduto VarChar(1),
+		RefProduto 	VarChar(15),
+		DescProduto VarChar(100),
+		CompProduto VarChar(100),
+		DescReduzida VarChar(50),
+		SeAtivo VarChar(1),
+		SeProdutoSite VarChar(1),
+		UniProduto VarChar(2),
+		VlrCustoProduto DECIMAL (5,2),
+		PercLucroProduto DECIMAL(5,2),
+		VlrVendaProduto DECIMAL(5,2),
+		UsuarioCadastro VarChar(50),
+		DataCadastro Date,
+		HoraCadastro Time,
+		UsuarioUltimaModificacao VarChar(50),
+		DataUltimaModificacao Date,
+		HoraUltimaModificacao Time
+	);
+	
+
+	CREATE TABLE IF NOT EXISTS Grades (
+		CodGrade int(5) AUTO_INCREMENT PRIMARY KEY, 
+		DescGrade VarChar(50), 
+		SitGrade VarChar(1)
+	);	 
+
+	
+	CREATE TABLE IF NOT EXISTS GradesTam (
+		CodGrade int(5) NOT NULL,
+		CodTamanho VarChar(5) NOT NULL,
+		DescTamanho VarChar(80), 
+		Proporcao  int(2),
+		
+		PRIMARY KEY(CodGrade,CodTamanho)
+	);
+	
+	CREATE TABLE IF NOT EXISTS ProdVariantes (
+		CodProduto int,
+		CodVariante	int,
+		
+		PRIMARY KEY(CodProduto,CodVariante)
+	);
+	
+	CREATE TABLE IF NOT EXISTS ProdImagens (
+		CodImagem INT(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		CodProduto INT(5),
+		CodVariante INT(5),
+		DirImagem VarChar(150),
+		NomeImagem VarChar(80),
+		TextoImagem VarChar(150),
+		TipoImagem VarChar(4),
+		TamanhoImagem DECIMAL(10,2)
+	);
+	
+	
+	CREATE TABLE IF NOT EXISTS Cores (
+		CodCor INT PRIMARY KEY AUTO_INCREMENT,
+		RefCor VarChar(15),
+		DescCor VarChar(50) NOT NULL,
+		HexaDecimal VarChar(7) NOT NULL
+	);
+
+	
+	CREATE TABLE IF NOT EXISTS Usuarios (
+		CodUsuarios int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		NomeUsuario VarChar(30),
+		SenhaUsuario VarChar(32),
+		TipoUsuario VarChar(1)
+	);
+	
+	CREATE TABLE IF NOT EXISTS Pedidos (
+		NrPedido INT(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		CodCliente INT(5),
+		CodEndereco INT(5),
+		CodVendedor INT(5),
+		DataEmissao Date,
+		VlrItens DECIMAL(9,2),				
+		VlrFrete DECIMAL(9,2),
+		VlrComissao DECIMAL(9,2),
+		PercComissao DECIMAL(5,2),
+		VlrOutDespesas DECIMAL(9,2),
+		VlrIpi DECIMAL(9,2),
+		VlrIcms DECIMAL(9,2),
+		VlrIcmsSt DECIMAL(9,2),
+		VlrDesconto DECIMAL(9,2),
+		PercDesconto DECIMAL(5,2),
+		VlrPedido DECIMAL(9,2),
+		QtdeItens INT(5),
+		SitPedido VarChar(1),
+		DataEntrega Date,		
+		FormaPagamento INT(2),
+		Observacao VarChar(150)
+	);
+	
+	CREATE TABLE IF NOT EXISTS PedITe (
+		NrPedido INT(5) NOT NULL ,
+		NrSeqIte INT(4)NOT NULL ,
+		CodProduto INT(5),
+		CodTamanho VarChar(5),
+		CodVariante INT(5),
+		QtdeItem INT(4),
+		QtdeItem1 INT(4),		
+		QtdeItem2 INT(4),
+		QtdeItem3 INT(4),		
+		QtdeItem4 INT(4),
+		QtdeItem5 INT(4),
+		QtdeItem6 INT(4),
+		QtdeItem7 INT(4),
+		QtdeItem8 INT(4),
+		QtdeItem9 INT(4),
+		QtdeItem10 INT(4),
+		QtdeItem11 INT(4),
+		QtdeItem12 INT(4),		
+		VlrUnitario DECIMAL(5,2),
+		VlrItem DECIMAL (6,2),
+		VlrCustoUnitario DECIMAL(5,2),
+		VlrCustoItem DECIMAL(6,2),
+		
+		PRIMARY KEY(NrPedido, NrSeqIte)
+	);
+	
+	CREATE TABLE IF NOT EXISTS Vendedores (
+		CodVendedor INT(5) AUTO_INCREMENT PRIMARY KEY NOT NULL ,
+		NomeVendedor VarChar(80) NOT NULL ,
+		TaxaComissao Decimal(5,2),
+		CodCliente INT(5)
+	);
+	
+	CREATE TABLE IF NOT EXISTS Usuarios (
+		CodUsuario INT(5) AUTO_INCREMENT PRIMARY KEY NOT NULL ,
+		DescUsuario VarChar(80) NOT NULL ,
+		NomeUsuario VarChar(20),
+		SenhaUsuario VarChar(32),
+		TipoUsuario VarChar(1),
+		CodCliente INT(5)
+	);
+	

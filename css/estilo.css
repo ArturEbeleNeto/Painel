@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06/02/2015, 23:31:53
+    Author     : Artur
+*/
+
+html { overflow-y: scroll; }
+html { overflow: -moz-scrollbars-vertical; }
+html { overflow-x: auto; }
+
+#divBotoesForm {
+    margin-top: 20px;    
+    background-color: #f3f3f3;
+    line-height: 1.42857143;
+    border-color: #e7e7e7;
+    border-width: 1px;
+    border-style: solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.linhaSel {
+    background-color: royalblue !important;
+}
+.linhaSec {
+    background-color: #bbb !important;
+}
+
+.divMenu {
+    height: 50px;
+}
+
+.navbar-right {
+    margin-right: 5px;
+}
+
+.table {
+    border-bottom: 1px solid black;
+}
+
+.frmCliente {
+    margin-bottom: 20px;
+}
+
+.row-CadastroCliente {
+    margin-bottom: 20px;
+}
+
+.tab-pane {
+    padding-top: 15px;
+}
+
+
+

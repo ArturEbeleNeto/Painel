@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/04/2015, 07:04:52
+    Author     : Artur
+*/
+
+#divBotoesForm {
+    margin-top: 20px;    
+    background-color: #f3f3f3;
+    line-height: 1.42857143;
+    border-color: #e7e7e7;
+    border-width: 1px;
+    border-style: solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.ImagemProduto{
+    width: 150px;    
+}
+
+#frmUploadImagens{
+    display: none;
+}
+
+#divOpcoesVariante {
+    padding-top: 35px;
+}
+
+body #divPopPesqVariantes {        
+    width: 700px;
+    margin-left: -350px;
+}
